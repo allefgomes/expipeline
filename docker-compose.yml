@@ -5,7 +5,7 @@ services:
     container_name: pipeline_web
     entrypoint: /bin/sh
     volumes:
-      - .:/web
+      - .:/var/www/web
     ports:
       - "4000:4000"
     tty: true
