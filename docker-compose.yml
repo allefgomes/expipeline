@@ -1,0 +1,21 @@
+version: "3"
+services:
+  web:
+    build: .
+    container_name: pipeline_web
+    entrypoint: /bin/sh
+    volumes:
+      - .:/web
+    ports:
+      - "4000:4000"
+    tty: true
+    stdin_open: true
+    depends_on:
+      - database
+  database:
+    container_name: pipeline_database
+    image: postgres
+    volumes:
+      - ~/.docker/postgresql/data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: password
