@@ -9,4 +9,6 @@ RUN mix local.hex --force && \
 COPY mix.* ./
 RUN mix do deps.get, deps.compile
 
+COPY . /var/www/web
+
 EXPOSE 4000
