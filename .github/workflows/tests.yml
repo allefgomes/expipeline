@@ -37,7 +37,7 @@ jobs:
         env:
           POSTGRES_PASSWORD: password
         options: >-
-          --helth-cmd pg_isready
-          --helth-interval 10s
-          --helth-timeout 5s
-          --helth-retries 5
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
