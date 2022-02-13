@@ -15,8 +15,11 @@ services:
       - database
   database:
     container_name: pipeline_database
-    image: postgres
+    image: postgres:13.6-alpine
     volumes:
       - ~/.docker/postgresql/data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
     environment:
-      POSTGRES_PASSWORD: password
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USERNAME: postgres
