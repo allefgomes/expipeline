@@ -1,9 +1,9 @@
-name: Verify Format
+name: Verify Dialyzer
 
 on: pull_request
 
 jobs:
-  check_format:
+  dialyzer:
     runs-on: ubuntu-latest
     strategy: 
       matrix:
@@ -16,13 +16,13 @@ jobs:
           elixir-version: ${{ matrix.elixir }}
           otp-version: ${{ matrix.otp }}
       - uses: actions/cache@v1
-        id: mix-cache-format
+        id: mix-cache-dialyzer
         with:
           path: deps
           key: ${{ runner.os }}-${{ matrix.otp }}-${{ matrix.elixir }}-mix-${{ hashFiles(format('{0}{1}', github.workspace, '/mix.lock')) }}
       - name: Install Mix Dependencies
-        if: steps.mix-cache-format.outputs.cache-hit != 'true'
+        if: steps.mix-cache-dialyzer.outputs.cache-hit != 'true'
         run: mix deps.get
-      - name: ===> FORMAT
-        run: mix format --check-formatted
+      - name: ===> Dialyzer
+        run: mix dialyzer
 
