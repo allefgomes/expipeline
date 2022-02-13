@@ -1,9 +1,9 @@
-name: Verify LINT
+name: Tests and Coveralls
 
 on: pull_request
 
 jobs:
-  lint:
+  coveralls:
     runs-on: ubuntu-latest
     strategy: 
       matrix:
